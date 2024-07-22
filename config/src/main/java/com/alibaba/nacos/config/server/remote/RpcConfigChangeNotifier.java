@@ -91,6 +91,7 @@ public class RpcConfigChangeNotifier extends Subscriber<LocalDataChangeEvent> {
         
         Set<String> listeners = configChangeListenContext.getListeners(groupKey);
         if (CollectionUtils.isEmpty(listeners)) {
+            Loggers.REMOTE_PUSH.info("{} -- no listeners for groupKey=[{}]", getClass().getName(), groupKey);
             return;
         }
         int notifyClientCount = 0;
