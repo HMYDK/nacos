@@ -43,6 +43,9 @@ public class GlobalExecutor {
     
     public static final int DEFAULT_THREAD_COUNT = EnvUtil.getAvailableProcessors(0.5);
     
+    /**
+     * com.alibaba.nacos.naming.timer.0 线程 正在等待 java.util.concurrent.ConcurrentHashMap 的锁，而这个锁被 main 线程 持有。
+     */
     private static final ScheduledExecutorService NAMING_TIMER_EXECUTOR = ExecutorFactory.Managed
             .newScheduledExecutorService(ClassUtils.getCanonicalName(NamingApp.class),
                     EnvUtil.getAvailableProcessors(2), new NameThreadFactory("com.alibaba.nacos.naming.timer"));

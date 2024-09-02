@@ -77,6 +77,9 @@ public abstract class ConnectionControlManager {
     }
     
     private void initExecuteService() {
+        /**
+         * 线程 nacos.plugin.control.connection.reporter 正在等待 java.util.concurrent.ConcurrentHashMap 的锁，而这个锁被 main 线程 持有。
+         */
         executorService = ExecutorFactory.newSingleScheduledExecutorService(r -> {
             Thread thread = new Thread(r, "nacos.plugin.control.connection.reporter");
             thread.setDaemon(true);
